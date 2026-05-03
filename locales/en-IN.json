@@ -1,0 +1,16 @@
+{
+  "greeting": "Hello! I am Aarogya AI. What health concern can I help you with?",
+  "askSymptom": "Please tell me your main symptom.",
+  "askDuration": "How long have you had this issue?",
+  "askSeverity": "How severe is it? (Mild, Moderate, or Severe)",
+  "calculatingRisk": "Calculating risk...",
+  "highRisk": "High Risk",
+  "mediumRisk": "Medium Risk",
+  "lowRisk": "Low Risk",
+  "bookPHC": "Book PHC",
+  "generateABHA": "Generate ABHA ID",
+  "thankYou": "Thank you! We are here to help.",
+  "visitDoctor": "Please visit a doctor as soon as possible.",
+  "urgent": "URGENT: Call 108 ambulance immediately.",
+  "languageName": "English"
+}
