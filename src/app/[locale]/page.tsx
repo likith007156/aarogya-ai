@@ -438,7 +438,7 @@ export default function LandingPage() {
         {/* SECTION 4: LIVE DEMO LINKS */}
         <section className="bg-surface-container py-24 px-6">
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div className="order-2 lg:order-1">
                 <div className="bg-slate-900 rounded-[2rem] p-4 shadow-2xl overflow-hidden border-4 border-slate-800">
                   <Link href={`/${locale}/chat`} className="block aspect-video bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl relative group cursor-pointer overflow-hidden border border-white/10">
@@ -452,32 +452,32 @@ export default function LandingPage() {
                 </div>
               </div>
               <div className="order-1 lg:order-2 space-y-6">
-                <h2 className="font-h2 text-2xl sm:text-3xl md:text-4xl font-bold text-on-surface leading-tight break-words">Experience the Interface</h2>
-                <p className="text-on-surface-variant font-body-lg text-sm sm:text-base md:text-lg leading-relaxed break-words">We've built Aarogya AI to live where the people are. Choose an interface to see how it bridges the digital divide.</p>
+                <h2 className="font-h2 text-2xl md:text-3xl lg:text-4xl font-bold text-on-surface leading-[1.2]" style={{wordWrap: 'break-word', overflowWrap: 'break-word'}}>Experience the Interface</h2>
+                <p className="text-on-surface-variant font-body-lg text-base md:text-lg leading-relaxed" style={{wordWrap: 'break-word', overflowWrap: 'break-word'}}>We've built Aarogya AI to live where the people are. Choose an interface to see how it bridges the digital divide.</p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <Link href={`/${locale}/chat`} className="flex items-center gap-3 p-4 bg-white rounded-2xl border border-slate-200 hover:border-primary hover:shadow-lg transition-all group">
+                  <Link href={`/${locale}/chat`} className="flex items-center gap-3 p-4 bg-white rounded-2xl border border-slate-200 hover:border-primary hover:shadow-lg transition-all group min-h-[60px]">
                     <div className="p-2 rounded-lg bg-slate-50 group-hover:bg-primary/10 flex-shrink-0">
                       <span className="material-symbols-outlined text-secondary group-hover:text-primary">language</span>
                     </div>
-                    <span className="font-semibold text-sm text-on-surface break-words">Web Chat</span>
+                    <span className="font-semibold text-sm text-on-surface" style={{wordWrap: 'break-word', overflowWrap: 'break-word'}}>Web Chat</span>
                   </Link>
-                  <Link href={`/${locale}/whatsapp`} className="flex items-center gap-3 p-4 bg-white rounded-2xl border border-slate-200 hover:border-primary hover:shadow-lg transition-all group">
+                  <Link href={`/${locale}/whatsapp`} className="flex items-center gap-3 p-4 bg-white rounded-2xl border border-slate-200 hover:border-primary hover:shadow-lg transition-all group min-h-[60px]">
                     <div className="p-2 rounded-lg bg-slate-50 group-hover:bg-primary/10 flex-shrink-0">
                       <span className="material-symbols-outlined text-secondary group-hover:text-primary">chat</span>
                     </div>
-                    <span className="font-semibold text-sm text-on-surface break-words">WhatsApp</span>
+                    <span className="font-semibold text-sm text-on-surface" style={{wordWrap: 'break-word', overflowWrap: 'break-word'}}>WhatsApp</span>
                   </Link>
-                  <Link href={`/${locale}/ivrs`} className="flex items-center gap-3 p-4 bg-white rounded-2xl border border-slate-200 hover:border-primary hover:shadow-lg transition-all group">
+                  <Link href={`/${locale}/ivrs`} className="flex items-center gap-3 p-4 bg-white rounded-2xl border border-slate-200 hover:border-primary hover:shadow-lg transition-all group min-h-[60px]">
                     <div className="p-2 rounded-lg bg-slate-50 group-hover:bg-primary/10 flex-shrink-0">
                       <span className="material-symbols-outlined text-secondary group-hover:text-primary">call</span>
                     </div>
-                    <span className="font-semibold text-sm text-on-surface break-words">IVRS Call</span>
+                    <span className="font-semibold text-sm text-on-surface" style={{wordWrap: 'break-word', overflowWrap: 'break-word'}}>IVRS Call</span>
                   </Link>
-                  <Link href={`/${locale}/asha`} className="flex items-center gap-3 p-4 bg-white rounded-2xl border border-slate-200 hover:border-primary hover:shadow-lg transition-all group">
+                  <Link href={`/${locale}/asha`} className="flex items-center gap-3 p-4 bg-white rounded-2xl border border-slate-200 hover:border-primary hover:shadow-lg transition-all group min-h-[60px]">
                     <div className="p-2 rounded-lg bg-slate-50 group-hover:bg-primary/10 flex-shrink-0">
                       <span className="material-symbols-outlined text-secondary group-hover:text-primary">health_and_safety</span>
                     </div>
-                    <span className="font-semibold text-sm text-on-surface break-words">ASHA Dash</span>
+                    <span className="font-semibold text-sm text-on-surface" style={{wordWrap: 'break-word', overflowWrap: 'break-word'}}>ASHA Dash</span>
                   </Link>
                 </div>
               </div>
