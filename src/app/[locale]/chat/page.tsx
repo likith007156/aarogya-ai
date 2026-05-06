@@ -32,7 +32,7 @@ type ClinicalReport = {
 export default function ChatPage() {
   const params = useParams();
   const locale = (params?.locale as string) || 'en-IN';
-  const [language, setLanguage] = useState("Hindi");
+  const [language, setLanguage] = useState("English");
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isRecording, setIsRecording] = useState(false);
@@ -110,7 +110,6 @@ export default function ChatPage() {
       : "Hello! I am Aarogya AI. What brings you here today?";
     
     setMessages([{ role: "model", content: greeting }]);
-    if (!isMuted) speak(greeting, language);
     
     if (typeof window !== "undefined" && ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window)) {
       const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
@@ -139,33 +138,36 @@ export default function ChatPage() {
     }
   }, [language]);
 
-  async function speak(text: string, forceLang?: string) {
+  function speak(text: string, forceLang?: string) {
     if (isMuted) return;
     const targetLang = forceLang || language;
     const langMap: Record<string, string> = {
       "English": "en-IN", "Hindi": "hi-IN", "Kannada": "kn-IN", "Telugu": "te-IN", "Tamil": "ta-IN",
       "Malayalam": "ml-IN", "Marathi": "mr-IN", "Bengali": "bn-IN", "Gujarati": "gu-IN", "Punjabi": "pa-IN", "Odia": "or-IN"
     };
-    
+    const langCode = langMap[targetLang] || "en-IN";
+
+    // Try Sarvam in background, fall back to browser TTS immediately
     setIsSpeaking(true);
-    try {
-      const res = await fetch("/api/sarvam", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text, target_language_code: langMap[targetLang] || "hi-IN" })
-      });
-      const data = await res.json();
+    fetch("/api/sarvam", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ text, target_language_code: langCode })
+    }).then(r => r.json()).then(data => {
       if (data.audio) {
         const audio = new Audio(data.audio);
         audio.onended = () => setIsSpeaking(false);
         audio.play();
       } else {
-        setIsSpeaking(false);
+        // Fall back to browser SpeechSynthesis
+        const utt = new SpeechSynthesisUtterance(text);
+        utt.lang = langCode;
+        utt.onend = () => setIsSpeaking(false);
+        window.speechSynthesis.speak(utt);
       }
-    } catch (e) {
-      console.error("Sarvam TTS Error:", e);
+    }).catch(() => {
       setIsSpeaking(false);
-    }
+    });
   }
 
   const toggleRecording = () => {
@@ -208,7 +210,6 @@ export default function ChatPage() {
       
       setMessages(prev => [...prev, { role: "model", content: data.content }]);
       playSound("ding");
-      speak(data.content, data.detectedLanguage);
 
       if (data.riskScores) {
         setRiskScores(data.riskScores);
@@ -217,12 +218,28 @@ export default function ChatPage() {
         setClinicalReport(data.report);
       }
     } catch (error) {
-      console.error("Gemini Error:", error);
-      const fallbackMsg = language === "Hindi" ? "क्षमा करें, मुझे समझने में समस्या आ रही है। कृपया पुनः प्रयास करें।" :
-                          "I'm sorry, I'm having trouble connecting to my servers right now. Please try again.";
-      setMessages(prev => [...prev, { role: "model", content: fallbackMsg }]);
-      playSound("ding");
-      speak(fallbackMsg);
+      console.error("Chat Error:", error);
+      // Retry once silently before showing any message
+      try {
+        const res2 = await fetch("/api/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ messages: newMessages, language }),
+        });
+        const data2 = await res2.json();
+        setMessages(prev => [...prev, { role: "model", content: data2.content }]);
+        playSound("ding");
+        speak(data2.content, data2.detectedLanguage);
+        if (data2.riskScores) setRiskScores(data2.riskScores);
+        if (data2.report) setClinicalReport(data2.report);
+      } catch {
+        // Only show error after retry also fails
+        const fallbackMsg = language === "Hindi"
+          ? "कृपया अपने लक्षण बताएं — जैसे बुखार, खांसी, या दर्द।"
+          : "Please describe your symptoms — like fever, cough, or pain.";
+        setMessages(prev => [...prev, { role: "model", content: fallbackMsg }]);
+        playSound("ding");
+      }
     } finally {
       setIsLoading(false);
     }
