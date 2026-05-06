@@ -1,11 +1,11 @@
 # Aarogya AI - Healthcare for Every Indian
 
-Aarogya AI is a multilingual rural health companion demo built for the Cognizant Technoverse 2026 Hackathon. It provides voice-first, AI-powered symptom triaging and healthcare access tailored for rural India.
+Aarogya AI is a multilingual rural health companion demo. It provides voice-first, AI-powered symptom triaging and healthcare access tailored for rural India.
 
 ## Features
 
 - **Multilingual Voice Interface**: Supports Hindi, English, and Tamil. Voice inputs using Web Speech API, Voice output using SpeechSynthesis.
-- **Symptom Triaging**: Powered by Google Gemini AI, acts as a compassionate health assistant.
+- **Symptom Triaging**: Powered by Sarvam AI, acts as a compassionate health assistant.
 - **Disease Risk Calculator**: Rule-based scoring engine for Tuberculosis, Diabetes, Anemia, and Hypertension.
 - **PHC Locator**: Integrated map with mock Primary Health Centres across Karnataka.
 - **ASHA Worker Dashboard**: Overview of patients, high-risk cases, and quick referral tracking.
@@ -15,7 +15,7 @@ Aarogya AI is a multilingual rural health companion demo built for the Cognizant
 ## Tech Stack
 
 - **Frontend**: Next.js 14 App Router, Tailwind CSS, shadcn/ui, Framer Motion
-- **Backend/AI**: Next.js API Routes, Google Gemini API (@google/generative-ai)
+- **Backend/AI**: Next.js API Routes, Sarvam AI
 - **Database**: SQLite, Prisma ORM
 - **Maps**: react-leaflet
 
@@ -31,11 +31,11 @@ npm install
 \`\`\`
 
 ### 2. Environment Variables
-Copy the example environment variables file and add your Gemini API Key.
+Copy the example environment variables file and add your Sarvam API Key.
 \`\`\`bash
 cp .env.example .env
 \`\`\`
-Edit `.env` and fill in your `GEMINI_API_KEY`.
+Edit `.env` and fill in your API key.
 
 ### 3. Database Setup
 Push the schema to SQLite and seed the database with sample mock data (Patients and PHCs).

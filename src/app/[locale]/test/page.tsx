@@ -6,7 +6,6 @@ import { Lock } from "lucide-react";
 type TestStatus = "untested" | "pass" | "fail";
 
 const TEST_CARDS = [
-  { id: "gemini", name: "Gemini API Test", icon: "🧠" },
   { id: "twilio", name: "Twilio WhatsApp Test", icon: "📱" },
   { id: "risk", name: "Risk Calculator Test", icon: "🎯" },
   { id: "abha", name: "ABHA Generator Test", icon: "🆔" },
@@ -20,7 +19,6 @@ export default function TestDashboard() {
   const [error, setError] = useState("");
 
   const [statuses, setStatuses] = useState<Record<string, TestStatus>>({
-    gemini: "untested",
     twilio: "untested",
     risk: "untested",
     abha: "untested",
@@ -42,15 +40,7 @@ export default function TestDashboard() {
     setStatuses((prev) => ({ ...prev, [id]: "untested" }));
     try {
       let res: Response | undefined;
-      if (id === "gemini") {
-        const lang = (document.getElementById("gemini-lang") as HTMLSelectElement)?.value || "en";
-        const prompt = (document.getElementById("gemini-prompt") as HTMLTextAreaElement)?.value || "";
-        res = await fetch("/api/chat", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ messages: [{ role: "user", content: prompt }], language: lang })
-        });
-      } else if (id === "twilio") {
+      if (id === "twilio") {
         const phone = (document.getElementById("twilio-phone") as HTMLInputElement)?.value || "+919999999999";
         const msg = (document.getElementById("twilio-msg") as HTMLInputElement)?.value || "test";
         res = await fetch("/api/whatsapp/send", {
@@ -144,41 +134,6 @@ export default function TestDashboard() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-          {/* GEMINI API TEST */}
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col h-full hover:border-slate-700 transition-colors">
-            <div className="flex justify-between items-start mb-6">
-              <div className="flex items-center gap-3">
-                <span className="text-3xl">🧠</span>
-                <h3 className="text-lg font-semibold text-white tracking-tight">GEMINI API TEST</h3>
-              </div>
-              <StatusBadge status={statuses["gemini"]} />
-            </div>
-            
-            <div className="flex-1 space-y-4 mb-6">
-              <select id="gemini-lang" className="w-full bg-slate-950 border border-slate-800 rounded-lg p-2 text-sm text-slate-300 focus:border-primary focus:ring-0">
-                <option value="en">English (Default)</option>
-                <option value="hi">Hindi</option>
-                <option value="kn">Kannada</option>
-                <option value="ta">Tamil</option>
-                <option value="te">Telugu</option>
-                <option value="mr">Marathi</option>
-              </select>
-              <textarea 
-                id="gemini-prompt"
-                className="w-full h-24 bg-slate-950 border border-slate-800 rounded-lg p-3 text-sm text-slate-300 focus:border-primary focus:ring-0 resize-none"
-                placeholder="Enter test prompt..."
-                defaultValue="I have a slight fever and headache since yesterday."
-              ></textarea>
-            </div>
-            
-            <button 
-              onClick={() => runTest("gemini")}
-              className="w-full bg-slate-800 hover:bg-slate-700 text-white rounded-lg py-3 text-sm font-medium transition-colors border border-slate-700 flex items-center justify-center gap-2 mt-auto"
-            >
-              <span>{statuses["gemini"] === "untested" ? "RUN TEST" : "RE-RUN TEST"}</span>
-            </button>
-          </div>
-
           {/* TWILIO WHATSAPP TEST */}
           <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col h-full hover:border-slate-700 transition-colors">
             <div className="flex justify-between items-start mb-6">

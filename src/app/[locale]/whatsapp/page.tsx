@@ -74,7 +74,7 @@ export default function WhatsAppSimulator() {
             <h2 className="text-2xl font-bold text-slate-800 mb-4">Aarogya AI WhatsApp Bot</h2>
             <p className="text-slate-600 mb-6">
               This is a simulator for our real Twilio WhatsApp integration. 
-              The bot supports 6 native languages and uses Gemini 2.0 Flash to detect and respond in the same language.
+              The bot supports 6 native languages and uses Sarvam AI to detect and respond in the same language.
             </p>
             <div className="bg-green-50 border border-green-200 p-4 rounded-xl mb-6">
               <h3 className="font-bold text-green-800 mb-2">Try these commands:</h3>

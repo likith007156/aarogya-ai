@@ -6,22 +6,10 @@ import { useParams, useRouter } from "next/navigation";
 import { HeartPulse } from "lucide-react";
 
 // Brand logo SVG components
-const GeminiLogo = () => (
-  <svg width="32" height="32" viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M96 20C96 20 120 72 172 96C120 120 96 172 96 172C96 172 72 120 20 96C72 72 96 20 96 20Z" fill="url(#gemini-grad)"/>
-    <defs>
-      <linearGradient id="gemini-grad" x1="20" y1="20" x2="172" y2="172" gradientUnits="userSpaceOnUse">
-        <stop stopColor="#4285F4"/>
-        <stop offset="1" stopColor="#0F9D58"/>
-      </linearGradient>
-    </defs>
-  </svg>
-);
-
-const BhashiniLogo = () => (
+const SarvamAILogo = () => (
   <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect width="100" height="100" rx="16" fill="#FF6B00"/>
-    <text x="50" y="68" textAnchor="middle" fontSize="52" fontWeight="bold" fill="white" fontFamily="serif">भ</text>
+    <rect width="100" height="100" rx="16" fill="#8B5CF6"/>
+    <text x="50" y="68" textAnchor="middle" fontSize="52" fontWeight="bold" fill="white" fontFamily="sans-serif">S</text>
   </svg>
 );
 
@@ -129,8 +117,8 @@ export default function LandingPage() {
           <div className="text-xl font-bold tracking-tighter text-on-surface font-h2 flex items-center">
             <img
               alt="Aarogya AI Logo"
-              className="h-8 w-8 inline-block mr-2 mb-1"
-              src="data:image/png;base64,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"
+              className="h-10 w-10 object-contain inline-block mr-2 mb-1"
+              src="/logo-icon.png"
             />
             Aarogya AI
           </div>
@@ -153,9 +141,6 @@ export default function LandingPage() {
         <section className="hero-gradient pt-32 pb-20 px-6">
           <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[55%_45%] gap-12 items-center">
             <div className="space-y-8">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 border border-tertiary/30 rounded-full shadow-sm">
-                <span className="text-xs font-label-caps text-tertiary font-bold">🏆 Cognizant Technoverse 2026</span>
-              </div>
               <div className="space-y-6">
                 <h1 className="font-h1 text-on-surface text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6 !leading-[1.1] tracking-tight">
                   <span 
@@ -189,8 +174,7 @@ export default function LandingPage() {
               <div className="pt-8 border-t border-slate-200">
                 <p className="text-xs font-label-caps text-on-surface-variant mb-4 font-bold">TRUSTED ECOSYSTEM PARTNERS</p>
                 <div className="flex flex-wrap gap-8 opacity-60 grayscale hover:grayscale-0 transition-all">
-                  <div className="flex items-center gap-2 font-bold text-lg text-slate-700"><GeminiLogo /> Gemini</div>
-                  <div className="flex items-center gap-2 font-bold text-lg text-slate-700"><BhashiniLogo /> Bhashini</div>
+                  <div className="flex items-center gap-2 font-bold text-lg text-slate-700"><SarvamAILogo /> Sarvam AI</div>
                   <div className="flex items-center gap-2 font-bold text-lg text-slate-700"><AbdmLogo /> ABDM</div>
                 </div>
               </div>
@@ -200,8 +184,8 @@ export default function LandingPage() {
                 <div className="absolute top-4 left-1/2 -translate-x-1/2 w-24 h-7 bg-black rounded-full z-30"></div>
                 <div className="h-full w-full bg-white flex flex-col pt-12 pb-6 px-4 font-kannada">
                   <div className="flex items-center gap-3 mb-6 pb-2 border-b border-slate-100">
-                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                      <span className="material-symbols-outlined text-primary">smart_toy</span>
+                    <div className="w-10 h-10 rounded-full overflow-hidden flex items-center justify-center">
+                      <img src="/logo-icon.png" alt="Aarogya AI" className="w-full h-full object-contain" />
                     </div>
                     <div>
                       <p className="font-bold text-sm text-on-surface">Aarogya AI</p>
@@ -252,8 +236,7 @@ export default function LandingPage() {
           <div className="max-w-7xl mx-auto px-6 text-center">
             <p className="text-xs font-label-caps text-on-surface-variant mb-8 tracking-widest font-bold">POWERED BY</p>
             <div className="flex flex-wrap justify-center items-center gap-x-16 gap-y-8 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-              <div className="flex items-center gap-3"><GeminiLogo /><span className="font-bold text-2xl text-slate-800">Gemini</span></div>
-              <div className="flex items-center gap-3"><BhashiniLogo /><span className="font-bold text-2xl text-slate-800">Bhashini</span></div>
+              <div className="flex items-center gap-3"><SarvamAILogo /><span className="font-bold text-2xl text-slate-800">Sarvam AI</span></div>
               <div className="flex items-center gap-3"><AbdmLogo /><span className="font-bold text-2xl text-slate-800">ABDM</span></div>
               <div className="flex items-center gap-3"><TwilioLogo /><span className="font-bold text-2xl tracking-tighter text-slate-800">Twilio</span></div>
               <div className="flex items-center gap-3"><GroqLogo /><span className="font-bold text-2xl text-slate-800">Groq</span></div>
@@ -485,45 +468,104 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* SECTION 5: HOW IT WORKS */}
+        {/* SECTION 5: TECHNICAL ARCHITECTURE */}
         <section className="py-24 px-6 bg-background overflow-hidden">
           <div className="max-w-7xl mx-auto text-center">
-            <h2 className="font-h2 text-4xl md:text-5xl font-bold mb-16 text-on-surface">Technical Architecture</h2>
-            <div className="relative flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4 px-10">
-              <div className="flex flex-col items-center gap-4 z-10 w-full md:w-auto">
-                <div className="w-24 h-24 bg-white rounded-2xl flex items-center justify-center border-2 border-primary/20 shadow-lg">
-                  <span className="material-symbols-outlined text-4xl text-primary">mic</span>
+            <h2 className="font-h2 text-4xl md:text-5xl font-bold mb-4 text-on-surface">Technical Architecture</h2>
+            <p className="text-on-surface-variant text-base mb-16 max-w-2xl mx-auto">
+              End-to-end pipeline from a rural user's voice to an ASHA worker's dashboard — all in under 3 seconds.
+            </p>
+
+            {/* Architecture flow — gap-0 on md so lines touch block edges */}
+            <div className="relative flex flex-col md:flex-row items-center gap-6 md:gap-0 px-2">
+
+              {/* Node 1: Voice / WhatsApp Input */}
+              <div className="flex flex-col items-center gap-3 z-10 shrink-0">
+                <div className="w-24 h-24 bg-white rounded-2xl flex items-center justify-center border-2 border-primary/30 shadow-lg">
+                  <span className="material-symbols-outlined text-6xl text-primary" style={{ fontVariationSettings: "'FILL' 1" }}>mic</span>
                 </div>
-                <p className="font-label-caps text-sm font-bold text-on-surface">User Speaks</p>
+                <p className="font-label-caps text-xs font-bold text-on-surface tracking-wider">Voice / WhatsApp</p>
               </div>
-              <div className="hidden md:block flex-1 h-0.5 bg-slate-200"></div>
-              <div className="flex flex-col items-center gap-4 z-10 w-full md:w-auto">
-                <div className="w-24 h-24 bg-white rounded-2xl flex items-center justify-center border-2 border-primary/20 shadow-lg">
-                  <span className="font-bold text-xl text-primary">Bhashini</span>
+
+              {/* Connector 1 */}
+              <div className="hidden md:block self-center flex-1 h-0.5 bg-primary/40"></div>
+
+              {/* Node 2: Sarvam AI — STT + Translation */}
+              <div className="flex flex-col items-center gap-3 z-10 shrink-0">
+                <div className="w-24 h-24 bg-white rounded-2xl flex items-center justify-center border-2 border-primary/30 shadow-lg p-2">
+                  <img
+                    src="https://logo.clearbit.com/sarvam.ai"
+                    alt="Sarvam AI"
+                    className="w-full h-full object-contain"
+                    onError={(e) => { (e.target as HTMLImageElement).style.display='none'; (e.target as HTMLImageElement).nextElementSibling!.classList.remove('hidden'); }}
+                  />
+                  <span className="hidden font-black text-2xl text-primary">S</span>
                 </div>
-                <p className="font-label-caps text-sm font-bold text-on-surface">Translation</p>
+                <p className="font-label-caps text-xs font-bold text-on-surface tracking-wider">Sarvam AI</p>
+                <p className="text-[10px] text-on-surface-variant -mt-2">STT + Translation</p>
               </div>
-              <div className="hidden md:block flex-1 h-0.5 bg-slate-200"></div>
-              <div className="flex flex-col items-center gap-4 z-10 w-full md:w-auto">
-                <div className="w-24 h-24 bg-slate-900 rounded-2xl flex items-center justify-center shadow-xl border-2 border-slate-700">
-                  <span className="font-bold text-xl text-white">Gemini</span>
+
+              {/* Connector 2 */}
+              <div className="hidden md:block self-center flex-1 h-0.5 bg-primary/40"></div>
+
+              {/* Node 3: Groq AI — Medical LLM */}
+              <div className="flex flex-col items-center gap-3 z-10 shrink-0">
+                <div className="w-24 h-24 bg-white rounded-2xl flex items-center justify-center border-2 border-primary/30 shadow-lg p-2">
+                  <img
+                    src="https://logo.clearbit.com/groq.com"
+                    alt="Groq AI"
+                    className="w-full h-full object-contain"
+                    onError={(e) => { (e.target as HTMLImageElement).style.display='none'; (e.target as HTMLImageElement).nextElementSibling!.classList.remove('hidden'); }}
+                  />
+                  <span className="hidden material-symbols-outlined text-2xl text-primary" style={{ fontVariationSettings: "'FILL' 1" }}>bolt</span>
                 </div>
-                <p className="font-label-caps text-sm font-bold text-on-surface">AI Engine</p>
+                <p className="font-label-caps text-xs font-bold text-on-surface tracking-wider">Groq AI</p>
+                <p className="text-[10px] text-on-surface-variant -mt-2">Symptom Analysis</p>
               </div>
-              <div className="hidden md:block flex-1 h-0.5 bg-slate-200"></div>
-              <div className="flex flex-col items-center gap-4 z-10 w-full md:w-auto">
-                <div className="w-24 h-24 bg-white rounded-2xl flex items-center justify-center border-2 border-secondary/20 shadow-lg">
-                  <span className="material-symbols-outlined text-4xl text-secondary">security</span>
+
+              {/* Connector 3 */}
+              <div className="hidden md:block self-center flex-1 h-0.5 bg-primary/40"></div>
+
+              {/* Node 4: Risk Scoring Engine */}
+              <div className="flex flex-col items-center gap-3 z-10 shrink-0">
+                <div className="w-24 h-24 bg-white rounded-2xl flex items-center justify-center border-2 border-primary/30 shadow-lg p-3">
+                  <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+                    <path d="M32 4L8 16v16c0 13.3 10.3 25.7 24 28 13.7-2.3 24-14.7 24-28V16L32 4z" fill="#16A34A" opacity="0.15"/>
+                    <path d="M32 4L8 16v16c0 13.3 10.3 25.7 24 28 13.7-2.3 24-14.7 24-28V16L32 4z" stroke="#16A34A" strokeWidth="3" fill="none"/>
+                    <path d="M22 32l7 7 13-14" stroke="#16A34A" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
                 </div>
-                <p className="font-label-caps text-sm font-bold text-on-surface">Risk Engine</p>
+                <p className="font-label-caps text-xs font-bold text-on-surface tracking-wider">Risk Engine</p>
+                <p className="text-[10px] text-on-surface-variant -mt-2">TB / Diabetes / Anemia</p>
               </div>
-              <div className="hidden md:block flex-1 h-0.5 bg-slate-200"></div>
-              <div className="flex flex-col items-center gap-4 z-10 w-full md:w-auto">
-                <div className="w-24 h-24 bg-white rounded-2xl flex items-center justify-center border-2 border-primary/20 shadow-lg">
-                  <span className="font-bold text-xl text-primary">ABDM</span>
+
+              {/* Connector 4 */}
+              <div className="hidden md:block self-center flex-1 h-0.5 bg-primary/40"></div>
+
+              {/* Node 5: ABDM / PHC Locator */}
+              <div className="flex flex-col items-center gap-3 z-10 shrink-0">
+                <div className="w-24 h-24 bg-white rounded-2xl flex items-center justify-center border-2 border-primary/30 shadow-lg">
+                  <div className="flex flex-col items-center gap-1">
+                    <span className="material-symbols-outlined text-4xl text-primary" style={{ fontVariationSettings: "'FILL' 1" }}>local_hospital</span>
+                    <span className="text-xs font-bold text-primary tracking-tight">ABDM</span>
+                  </div>
                 </div>
-                <p className="font-label-caps text-sm font-bold text-on-surface">Health IDs</p>
+                <p className="font-label-caps text-xs font-bold text-on-surface tracking-wider">ABDM / PHC</p>
+                <p className="text-[10px] text-on-surface-variant -mt-2">Health ID + Booking</p>
               </div>
+
+              {/* Connector 5 */}
+              <div className="hidden md:block self-center flex-1 h-0.5 bg-primary/40"></div>
+
+              {/* Node 6: ASHA Worker Dashboard */}
+              <div className="flex flex-col items-center gap-3 z-10 shrink-0">
+                <div className="w-24 h-24 bg-white rounded-2xl flex items-center justify-center border-2 border-primary/30 shadow-lg">
+                  <span className="material-symbols-outlined text-6xl text-primary" style={{ fontVariationSettings: "'FILL' 1" }}>health_and_safety</span>
+                </div>
+                <p className="font-label-caps text-xs font-bold text-on-surface tracking-wider">ASHA Worker</p>
+                <p className="text-[10px] text-on-surface-variant -mt-2">Alert Dashboard</p>
+              </div>
+
             </div>
           </div>
         </section>
@@ -680,7 +722,11 @@ export default function LandingPage() {
       <footer className="bg-slate-50 w-full py-12 border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="text-lg font-bold text-on-surface flex items-center">
-            <HeartPulse className="h-6 w-6 text-primary mr-2 mb-1" strokeWidth={2.5} />
+            <img
+              alt="Aarogya AI Logo"
+              className="h-8 w-8 object-contain inline-block mr-2 mb-1"
+              src="/logo-icon.png"
+            />
             Aarogya AI
           </div>
           <div className="flex flex-wrap justify-center gap-6 font-['Plus_Jakarta_Sans'] text-sm text-on-surface-variant">
