@@ -117,10 +117,13 @@ export default function LandingPage() {
             Aarogya AI
           </div>
           <div className="hidden md:flex items-center gap-8 font-['Plus_Jakarta_Sans'] text-sm font-medium tracking-tight">
-            <Link className="text-primary font-semibold transition-colors duration-200" href="#">Features</Link>
-            <Link className="text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Technology</Link>
-            <Link className="text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Impact</Link>
-            <Link className="text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">About</Link>
+            <Link className="text-primary font-semibold transition-colors duration-200" href={`/${locale}/features`}>Features</Link>
+            <Link className="text-on-surface-variant hover:text-primary transition-colors duration-200" href={`/${locale}/technology`}>Technology</Link>
+            <Link className="text-on-surface-variant hover:text-primary transition-colors duration-200" href={`/${locale}/impact`}>Impact</Link>
+            <Link className="text-on-surface-variant hover:text-primary transition-colors duration-200" href={`/${locale}/about`}>About</Link>
+            <Link className="text-error font-bold hover:text-error/80 transition-colors duration-200 flex items-center gap-1" href={`/${locale}/emergency`}>
+              <span className="material-symbols-outlined text-sm">emergency</span> Emergency
+            </Link>
           </div>
           <Link 
             className="bg-primary hover:bg-primary-container text-on-primary px-5 py-2 rounded-xl font-medium transition-all active:scale-95 duration-150"
@@ -238,29 +241,6 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* SECTION 2: PROBLEM */}
-        <section className="bg-[#0F172A] py-24 px-6 text-white overflow-hidden">
-          <div className="max-w-7xl mx-auto text-center space-y-16">
-            <div className="space-y-4">
-              <h2 className="font-h2 text-4xl md:text-5xl text-slate-100">600 million Indians have no doctor nearby</h2>
-              <p className="text-slate-400 font-body-lg max-w-2xl mx-auto">Rural India faces a critical shortage of medical professionals. The first mile of healthcare is broken by distance and language.</p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="p-8 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 hover:border-error/50 transition-all group">
-                <div className="text-error text-5xl font-h1 mb-2 group-hover:scale-110 transition-transform">600M+</div>
-                <p className="font-label-caps text-slate-400">Rural Indians</p>
-              </div>
-              <div className="p-8 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 hover:border-primary/50 transition-all group">
-                <div className="text-primary text-5xl font-h1 mb-2 group-hover:scale-110 transition-transform">22</div>
-                <p className="font-label-caps text-slate-400">Official Languages</p>
-              </div>
-              <div className="p-8 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 hover:border-secondary/50 transition-all group">
-                <div className="text-secondary text-5xl font-h1 mb-2 group-hover:scale-110 transition-transform">₹2,100 Cr</div>
-                <p className="font-label-caps text-slate-400">Economic Value Lost</p>
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* MAGIC SECTION */}
         <section className="py-24 px-6 bg-white" id="see-the-magic">
@@ -363,54 +343,6 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* SECTION 3: SOLUTION */}
-        <section className="py-24 px-6 bg-background">
-          <div className="max-w-7xl mx-auto">
-            <div className="mb-16 text-center">
-              <h2 className="font-h2 text-4xl md:text-5xl font-bold mb-6 text-on-surface">How Aarogya AI works</h2>
-              <div className="h-1.5 w-24 bg-primary mx-auto rounded-full"></div>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="p-10 rounded-3xl bg-surface-container-lowest border border-slate-100 shadow-xl shadow-slate-200/50 hover:-translate-y-2 transition-all flex flex-col items-center text-center">
-                <div className="w-20 h-20 rounded-2xl bg-primary/10 flex items-center justify-center mb-8">
-                  <span className="material-symbols-outlined text-primary text-5xl" style={{ fontVariationSettings: "'FILL' 1" }}>record_voice_over</span>
-                </div>
-                <h3 className="font-h3 text-2xl font-bold mb-4 text-on-surface">Speak Your Language</h3>
-                <p className="text-on-surface-variant font-body-md text-lg mb-8">No literacy required. Users just speak their symptoms into their phone like they're talking to a family member.</p>
-                <div className="w-full h-12 bg-primary/5 rounded-lg flex items-center justify-center gap-1">
-                  <div className="w-1.5 h-6 bg-primary rounded-full animate-pulse"></div>
-                  <div className="w-1.5 h-10 bg-primary rounded-full animate-pulse" style={{ animationDelay: '0.1s' }}></div>
-                  <div className="w-1.5 h-4 bg-primary rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
-                  <div className="w-1.5 h-12 bg-primary rounded-full animate-pulse" style={{ animationDelay: '0.3s' }}></div>
-                </div>
-              </div>
-              <div className="p-10 rounded-3xl bg-surface-container-lowest border border-slate-100 shadow-xl shadow-slate-200/50 hover:-translate-y-2 transition-all flex flex-col items-center text-center">
-                <div className="w-20 h-20 rounded-2xl bg-secondary/10 flex items-center justify-center mb-8">
-                  <span className="material-symbols-outlined text-secondary text-5xl">vital_signs</span>
-                </div>
-                <h3 className="font-h3 text-2xl font-bold mb-4 text-on-surface">Smart AI Triage</h3>
-                <p className="text-on-surface-variant font-body-md text-lg mb-8">Advanced LLMs assess risk levels instantly, categorizing urgency from 'home care' to 'emergency visit'.</p>
-                <div className="w-full h-4 bg-slate-100 rounded-full relative overflow-hidden">
-                  <div className="absolute left-0 top-0 h-full w-2/3 bg-gradient-to-r from-primary to-tertiary rounded-full"></div>
-                </div>
-                <p className="text-xs font-label-caps font-bold text-on-surface-variant mt-3">MEDIUM RISK DETECTED</p>
-              </div>
-              <div className="p-10 rounded-3xl bg-surface-container-lowest border border-slate-100 shadow-xl shadow-slate-200/50 hover:-translate-y-2 transition-all flex flex-col items-center text-center">
-                <div className="w-20 h-20 rounded-2xl bg-tertiary/10 flex items-center justify-center mb-8">
-                  <span className="material-symbols-outlined text-tertiary text-5xl" style={{ fontVariationSettings: "'FILL' 1" }}>location_on</span>
-                </div>
-                <h3 className="font-h3 text-2xl font-bold mb-4 text-on-surface">Connect to Care</h3>
-                <p className="text-on-surface-variant font-body-md text-lg mb-8">The AI automatically finds the nearest clinic and alerts local ASHA health workers for follow-up.</p>
-                <div className="w-full flex items-center justify-center">
-                  <div className="relative w-12 h-12 bg-tertiary/20 rounded-full flex items-center justify-center">
-                    <div className="absolute inset-0 bg-tertiary/10 rounded-full animate-ping"></div>
-                    <span className="material-symbols-outlined text-tertiary text-2xl">person_pin_circle</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* SECTION 4: LIVE DEMO LINKS */}
         <section className="bg-surface-container py-24 px-6">
@@ -462,54 +394,158 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* SECTION 5: TECHNICAL ARCHITECTURE */}
-        <section className="py-24 px-6 bg-background overflow-hidden">
-          <div className="max-w-7xl mx-auto text-center">
-            <h2 className="font-h2 text-4xl md:text-5xl font-bold mb-4 text-on-surface">Technical Architecture</h2>
-            <p className="text-on-surface-variant text-base mb-16 max-w-2xl mx-auto">
-              End-to-end pipeline from a rural user's voice to an ASHA worker's dashboard — all in under 3 seconds.
-            </p>
 
-            {/* Architecture flow — gap-0 on md so lines touch block edges */}
-            <div className="relative flex flex-col md:flex-row items-center gap-6 md:gap-0 px-2">
 
-              {/* Node 1: Voice / WhatsApp Input */}
-              <div className="flex flex-col items-center gap-3 z-10 shrink-0">
-                <div className="w-24 h-24 bg-white rounded-2xl flex items-center justify-center border-2 border-primary/30 shadow-lg">
-                  <span className="material-symbols-outlined text-6xl text-primary" style={{ fontVariationSettings: "'FILL' 1" }}>mic</span>
+
+        {/* SECTION 2: FEATURES */}
+        <section className="py-24 px-6 bg-slate-50" id="features">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="font-h2 text-4xl md:text-5xl font-bold mb-6 text-on-surface">Features</h2>
+              <div className="h-1.5 w-24 bg-primary mx-auto rounded-full mt-6"></div>
+            </div>
+            <div className="grid md:grid-cols-2 gap-8 mt-12">
+                <div className="bg-white p-6 rounded-2xl border border-slate-100 hover:shadow-md transition-shadow">
+                  <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-4">
+                    <div className="w-4 h-4 rounded-full bg-primary"></div>
+                  </div>
+                  <strong className="text-on-surface block text-xl mb-2 font-h2">Multilingual Voice</strong>
+                  <p className="text-base text-on-surface-variant">Native voice interface supporting 6 Indian languages natively without translation loss.</p>
                 </div>
-                <p className="font-label-caps text-xs font-bold text-on-surface tracking-wider">Voice / WhatsApp</p>
+
+                <div className="bg-white p-6 rounded-2xl border border-slate-100 hover:shadow-md transition-shadow">
+                  <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-4">
+                    <div className="w-4 h-4 rounded-full bg-primary"></div>
+                  </div>
+                  <strong className="text-on-surface block text-xl mb-2 font-h2">Smart AI Triage</strong>
+                  <p className="text-base text-on-surface-variant">Instant symptom analysis cross-referenced with local ICMR medical datasets.</p>
+                </div>
+
+                <div className="bg-white p-6 rounded-2xl border border-slate-100 hover:shadow-md transition-shadow">
+                  <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-4">
+                    <div className="w-4 h-4 rounded-full bg-primary"></div>
+                  </div>
+                  <strong className="text-on-surface block text-xl mb-2 font-h2">Offline Capability</strong>
+                  <p className="text-base text-on-surface-variant">Accessible via IVRS and feature-phones for regions without reliable internet.</p>
+                </div>
+
+                <div className="bg-white p-6 rounded-2xl border border-slate-100 hover:shadow-md transition-shadow">
+                  <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-4">
+                    <div className="w-4 h-4 rounded-full bg-primary"></div>
+                  </div>
+                  <strong className="text-on-surface block text-xl mb-2 font-h2">Direct Integration</strong>
+                  <p className="text-base text-on-surface-variant">Seamless synchronization with ASHA worker and PHC dashboards for quick response.</p>
+                </div>
+            </div>
+          </div>
+        </section>
+
+        {/* SECTION 3: HOW AAROGYA AI WORKS */}
+        <section className="py-24 px-6 bg-white" id="how-it-works">
+          <div className="max-w-7xl mx-auto">
+            <div className="mb-16 text-center">
+              <h2 className="font-h2 text-4xl md:text-5xl font-bold mb-6 text-on-surface">How Aarogya AI works</h2>
+              <div className="h-1.5 w-24 bg-primary mx-auto rounded-full"></div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="p-10 rounded-3xl bg-slate-50 border border-slate-100 hover:-translate-y-2 transition-all flex flex-col items-center text-center">
+                <div className="w-20 h-20 rounded-2xl bg-primary/10 flex items-center justify-center mb-8">
+                  <span className="material-symbols-outlined text-primary text-5xl" style={{ fontVariationSettings: "'FILL' 1" }}>record_voice_over</span>
+                </div>
+                <h3 className="font-h3 text-2xl font-bold mb-4 text-on-surface">Speak Your Language</h3>
+                <p className="text-on-surface-variant font-body-md text-lg mb-8">No literacy required. Users just speak their symptoms into their phone like they're talking to a family member.</p>
+                <div className="w-full h-12 bg-primary/5 rounded-lg flex items-center justify-center gap-1">
+                  <div className="w-1.5 h-6 bg-primary rounded-full animate-pulse"></div>
+                  <div className="w-1.5 h-10 bg-primary rounded-full animate-pulse" style={{ animationDelay: '0.1s' }}></div>
+                  <div className="w-1.5 h-4 bg-primary rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
+                  <div className="w-1.5 h-12 bg-primary rounded-full animate-pulse" style={{ animationDelay: '0.3s' }}></div>
+                </div>
+              </div>
+              <div className="p-10 rounded-3xl bg-slate-50 border border-slate-100 hover:-translate-y-2 transition-all flex flex-col items-center text-center">
+                <div className="w-20 h-20 rounded-2xl bg-secondary/10 flex items-center justify-center mb-8">
+                  <span className="material-symbols-outlined text-secondary text-5xl">vital_signs</span>
+                </div>
+                <h3 className="font-h3 text-2xl font-bold mb-4 text-on-surface">Smart AI Triage</h3>
+                <p className="text-on-surface-variant font-body-md text-lg mb-8">Advanced LLMs assess risk levels instantly, categorizing urgency from 'home care' to 'emergency visit'.</p>
+                <div className="w-full h-4 bg-white rounded-full relative overflow-hidden border border-slate-200">
+                  <div className="absolute left-0 top-0 h-full w-2/3 bg-gradient-to-r from-primary to-tertiary rounded-full"></div>
+                </div>
+                <p className="text-xs font-label-caps font-bold text-on-surface-variant mt-3">MEDIUM RISK DETECTED</p>
+              </div>
+              <div className="p-10 rounded-3xl bg-slate-50 border border-slate-100 hover:-translate-y-2 transition-all flex flex-col items-center text-center">
+                <div className="w-20 h-20 rounded-2xl bg-tertiary/10 flex items-center justify-center mb-8">
+                  <span className="material-symbols-outlined text-tertiary text-5xl" style={{ fontVariationSettings: "'FILL' 1" }}>location_on</span>
+                </div>
+                <h3 className="font-h3 text-2xl font-bold mb-4 text-on-surface">Connect to Care</h3>
+                <p className="text-on-surface-variant font-body-md text-lg mb-8">The AI automatically finds the nearest clinic and alerts local ASHA health workers for follow-up.</p>
+                <div className="w-full flex items-center justify-center">
+                  <div className="relative w-12 h-12 bg-tertiary/20 rounded-full flex items-center justify-center">
+                    <div className="absolute inset-0 bg-tertiary/10 rounded-full animate-ping"></div>
+                    <span className="material-symbols-outlined text-tertiary text-2xl">person_pin_circle</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* SECTION 4: TECHNICAL ARCHITECTURE */}
+        <section className="py-24 px-6 bg-slate-50" id="technical-architecture">
+          <div className="max-w-7xl mx-auto">
+            <div className="mb-16 text-center">
+              <h2 className="font-h2 text-4xl md:text-5xl font-bold mb-4 text-on-surface">Technical Architecture</h2>
+              <p className="text-on-surface-variant text-base max-w-2xl mx-auto">
+                End-to-end pipeline from a rural user's voice to an ASHA worker's dashboard — all in under 3 seconds.
+              </p>
+            </div>
+            
+            <div className="relative flex flex-col md:flex-row items-center justify-center gap-6 md:gap-0 px-2 overflow-x-auto py-8">
+              {/* Node 1: Voice / WhatsApp Input */}
+              <div className="flex flex-col items-center gap-3 z-10 shrink-0 w-24">
+                <div className="w-24 h-24 bg-white rounded-2xl flex items-center justify-center border-2 border-primary/30 shadow-lg">
+                  <span className="material-symbols-outlined text-primary" style={{ fontVariationSettings: "'FILL' 1", fontSize: "64px" }}>mic</span>
+                </div>
+                <div className="flex flex-col items-center w-0 justify-center">
+                  <p className="font-label-caps text-xs font-bold text-on-surface tracking-wider whitespace-nowrap">Voice / WhatsApp</p>
+                </div>
               </div>
 
               {/* Connector 1 */}
-              <div className="hidden md:block self-center flex-1 h-0.5 bg-primary/40"></div>
+              <div className="hidden md:block self-center flex-1 h-0.5 bg-primary/40 min-w-[20px]"></div>
 
               {/* Node 2: Sarvam AI — STT + Translation */}
-              <div className="flex flex-col items-center gap-3 z-10 shrink-0">
+              <div className="flex flex-col items-center gap-3 z-10 shrink-0 w-24">
                 <div className="w-24 h-24 bg-white rounded-2xl flex items-center justify-center border-2 border-primary/30 shadow-lg p-2">
                   <img src="/logo-sarvam.png" alt="Sarvam AI" className="w-full h-full object-contain" />
                 </div>
-                <p className="font-label-caps text-xs font-bold text-on-surface tracking-wider">Sarvam AI</p>
-                <p className="text-[10px] text-on-surface-variant -mt-2">STT + Translation</p>
+                <div className="flex flex-col items-center w-0 justify-center">
+                  <p className="font-label-caps text-xs font-bold text-on-surface tracking-wider whitespace-nowrap">Sarvam AI</p>
+                  <p className="text-[10px] text-on-surface-variant -mt-2 whitespace-nowrap">STT + Translation</p>
+                </div>
               </div>
 
               {/* Connector 2 */}
-              <div className="hidden md:block self-center flex-1 h-0.5 bg-primary/40"></div>
+              <div className="hidden md:block self-center flex-1 h-0.5 bg-primary/40 min-w-[20px]"></div>
 
               {/* Node 3: Groq AI — Medical LLM */}
-              <div className="flex flex-col items-center gap-3 z-10 shrink-0">
-                <div className="w-24 h-24 bg-white rounded-2xl flex items-center justify-center border-2 border-primary/30 shadow-lg p-2">
-                  <img src="/logo-groq.png" alt="Groq AI" className="w-full h-full object-contain rounded-xl" />
+              <div className="flex flex-col items-center gap-3 z-10 shrink-0 w-24">
+                <div className="w-24 h-24 bg-[#F55036] rounded-2xl flex flex-col items-center justify-center shadow-lg overflow-hidden">
+                  <span className="text-white font-bold text-4xl tracking-tighter leading-none mt-2" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>groq</span>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg" className="mt-1">
+                    <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" />
+                  </svg>
                 </div>
-                <p className="font-label-caps text-xs font-bold text-on-surface tracking-wider">Groq AI</p>
-                <p className="text-[10px] text-on-surface-variant -mt-2">Symptom Analysis</p>
+                <div className="flex flex-col items-center w-0 justify-center">
+                  <p className="font-label-caps text-xs font-bold text-on-surface tracking-wider whitespace-nowrap">Groq AI</p>
+                  <p className="text-[10px] text-on-surface-variant -mt-2 whitespace-nowrap">Symptom Analysis</p>
+                </div>
               </div>
 
               {/* Connector 3 */}
-              <div className="hidden md:block self-center flex-1 h-0.5 bg-primary/40"></div>
+              <div className="hidden md:block self-center flex-1 h-0.5 bg-primary/40 min-w-[20px]"></div>
 
               {/* Node 4: Risk Scoring Engine */}
-              <div className="flex flex-col items-center gap-3 z-10 shrink-0">
+              <div className="flex flex-col items-center gap-3 z-10 shrink-0 w-24">
                 <div className="w-24 h-24 bg-white rounded-2xl flex items-center justify-center border-2 border-primary/30 shadow-lg p-3">
                   <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
                     <path d="M32 4L8 16v16c0 13.3 10.3 25.7 24 28 13.7-2.3 24-14.7 24-28V16L32 4z" fill="#16A34A" opacity="0.15"/>
@@ -517,127 +553,114 @@ export default function LandingPage() {
                     <path d="M22 32l7 7 13-14" stroke="#16A34A" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </div>
-                <p className="font-label-caps text-xs font-bold text-on-surface tracking-wider">Risk Engine</p>
-                <p className="text-[10px] text-on-surface-variant -mt-2">TB / Diabetes / Anemia</p>
+                <div className="flex flex-col items-center w-0 justify-center">
+                  <p className="font-label-caps text-xs font-bold text-on-surface tracking-wider whitespace-nowrap">Risk Engine</p>
+                  <p className="text-[10px] text-on-surface-variant -mt-2 whitespace-nowrap">TB / Diabetes / Anemia</p>
+                </div>
               </div>
 
               {/* Connector 4 */}
-              <div className="hidden md:block self-center flex-1 h-0.5 bg-primary/40"></div>
+              <div className="hidden md:block self-center flex-1 h-0.5 bg-primary/40 min-w-[20px]"></div>
 
               {/* Node 5: ABDM / PHC Locator */}
-              <div className="flex flex-col items-center gap-3 z-10 shrink-0">
+              <div className="flex flex-col items-center gap-3 z-10 shrink-0 w-24">
                 <div className="w-24 h-24 bg-white rounded-2xl flex items-center justify-center border-2 border-primary/30 shadow-lg p-1">
                   <img src="/logo-abdm.png" alt="ABDM" className="w-full h-full object-contain" />
                 </div>
-                <p className="font-label-caps text-xs font-bold text-on-surface tracking-wider">ABDM / PHC</p>
-                <p className="text-[10px] text-on-surface-variant -mt-2">Health ID + Booking</p>
+                <div className="flex flex-col items-center w-0 justify-center">
+                  <p className="font-label-caps text-xs font-bold text-on-surface tracking-wider whitespace-nowrap">ABDM / PHC</p>
+                  <p className="text-[10px] text-on-surface-variant -mt-2 whitespace-nowrap">Health ID + Booking</p>
+                </div>
               </div>
 
               {/* Connector 5 */}
-              <div className="hidden md:block self-center flex-1 h-0.5 bg-primary/40"></div>
+              <div className="hidden md:block self-center flex-1 h-0.5 bg-primary/40 min-w-[20px]"></div>
 
               {/* Node 6: ASHA Worker Dashboard */}
-              <div className="flex flex-col items-center gap-3 z-10 shrink-0">
+              <div className="flex flex-col items-center gap-3 z-10 shrink-0 w-24">
                 <div className="w-24 h-24 bg-white rounded-2xl flex items-center justify-center border-2 border-primary/30 shadow-lg p-1">
                   <img src="/logo-asha.png" alt="ASHA / NHM" className="w-full h-full object-contain" />
                 </div>
-                <p className="font-label-caps text-xs font-bold text-on-surface tracking-wider">ASHA Worker</p>
-                <p className="text-[10px] text-on-surface-variant -mt-2">Alert Dashboard</p>
-              </div>
-
-            </div>
-          </div>
-        </section>
-
-        {/* SECTION 6: IMPACT */}
-        <section className="py-24 px-6 bg-gradient-to-br from-primary to-secondary text-white relative overflow-hidden">
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-[100px]"></div>
-            <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-[100px]"></div>
-          </div>
-          <div className="max-w-7xl mx-auto relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-              <div className="grid grid-cols-2 gap-8">
-                <div className="space-y-2">
-                  <div className="text-4xl font-h1">200,000+</div>
-                  <p className="text-white/80 font-label-caps">Lives Impacted</p>
-                </div>
-                <div className="space-y-2">
-                  <div className="text-4xl font-h1">15:1</div>
-                  <p className="text-white/80 font-label-caps">ROI for Government</p>
-                </div>
-                <div className="space-y-2">
-                  <div className="text-4xl font-h1">6 Weeks</div>
-                  <p className="text-white/80 font-label-caps">Deployment Time</p>
-                </div>
-                <div className="space-y-2">
-                  <div className="text-4xl font-h1">100%</div>
-                  <p className="text-white/80 font-label-caps">Open Source</p>
-                </div>
-              </div>
-              <div className="bg-white/10 backdrop-blur-lg p-10 rounded-[2rem] border border-white/20">
-                <span className="material-symbols-outlined text-4xl mb-6 opacity-50" style={{ fontVariationSettings: "'FILL' 1" }}>format_quote</span>
-                <p className="text-xl font-body-lg italic leading-relaxed mb-8">
-                  "Our goal isn't just to build a chatbot. It's to build a lifeline. By using voice and local dialects, we're removing the last barrier between technology and the people who need it most."
-                </p>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-tertiary overflow-hidden border-2 border-white/20">
-                    <img alt="Likith Kumar" className="w-full h-full object-cover" src="/team/likith.jpg"/>
-                  </div>
-                  <div>
-                    <p className="font-bold">Team Aarogya AI</p>
-                  </div>
+                <div className="flex flex-col items-center w-0 justify-center">
+                  <p className="font-label-caps text-xs font-bold text-on-surface tracking-wider whitespace-nowrap">ASHA Worker</p>
+                  <p className="text-[10px] text-on-surface-variant -mt-2 whitespace-nowrap">Alert Dashboard</p>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* SECTION 7: TEAM */}
-        <section className="py-24 px-6 bg-surface-container-low">
+        {/* SECTION 5: SOCIAL IMPACT */}
+        <section className="py-24 px-6 bg-white">
           <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="font-h2 text-4xl text-on-surface mb-4">Voices from the Ground</h2>
-              <div className="h-1.5 w-24 bg-primary mx-auto rounded-full"></div>
+             <div className="bg-[#0F172A] rounded-[3rem] p-12 md:p-16 text-white overflow-hidden shadow-2xl relative">
+              <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-[100px]"></div>
+              <div className="text-center space-y-12 relative z-10">
+                <div className="space-y-4">
+                  <h2 className="font-h2 text-4xl md:text-5xl text-slate-100">600 million Indians have no doctor nearby</h2>
+                  <p className="text-slate-400 font-body-lg max-w-2xl mx-auto">Rural India faces a critical shortage of medical professionals. The first mile of healthcare is broken by distance and language.</p>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  <div className="p-8 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 hover:border-error/50 transition-all group">
+                    <div className="text-error text-5xl font-h1 mb-2 group-hover:scale-110 transition-transform">600M+</div>
+                    <p className="font-label-caps text-slate-400">Rural Indians</p>
+                  </div>
+                  <div className="p-8 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 hover:border-primary/50 transition-all group">
+                    <div className="text-primary text-5xl font-h1 mb-2 group-hover:scale-110 transition-transform">22</div>
+                    <p className="font-label-caps text-slate-400">Official Languages</p>
+                  </div>
+                  <div className="p-8 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 hover:border-secondary/50 transition-all group">
+                    <div className="text-secondary text-5xl font-h1 mb-2 group-hover:scale-110 transition-transform">₹2,100 Cr</div>
+                    <p className="font-label-caps text-slate-400">Economic Value Lost</p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 flex flex-col h-full">
-                <span className="material-symbols-outlined text-primary text-4xl mb-6" style={{ fontVariationSettings: "'FILL' 1" }}>format_quote</span>
-                <div className="flex-1">
-                  <p className="font-indian-script text-lg text-on-surface leading-relaxed mb-4 italic">"अब मुझे डॉक्टर के पास जाने के लिए शहर नहीं जाना पड़ता। आरोग्य एआई ने मेरी मदद की।"</p>
-                  <p className="text-sm text-on-surface-variant mb-8 italic">"Now I don't have to go to the city to see a doctor. Aarogya AI helped me."</p>
-                </div>
-                <div className="flex items-center gap-4 mt-auto">
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center text-white font-bold text-xl">R</div>
-                  <div>
-                    <p className="font-bold text-on-surface">Ramesh Kumar</p>
-                    <p className="text-xs text-on-surface-variant">Vidisha, Madhya Pradesh</p>
+
+            <div className="mt-24">
+              <div className="text-center mb-16">
+                <h2 className="font-h2 text-4xl text-on-surface mb-4">Voices from the Ground</h2>
+                <div className="h-1.5 w-24 bg-primary mx-auto rounded-full"></div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="bg-slate-50 p-8 rounded-2xl shadow-sm border border-slate-100 flex flex-col h-full">
+                  <span className="material-symbols-outlined text-primary text-4xl mb-6" style={{ fontVariationSettings: "'FILL' 1" }}>format_quote</span>
+                  <div className="flex-1">
+                    <p className="font-indian-script text-lg text-on-surface leading-relaxed mb-4 italic">"अब मुझे डॉक्टर के पास जाने के लिए शहर नहीं जाना पड़ता। आरोग्य एआई ने मेरी मदद की।"</p>
+                    <p className="text-sm text-on-surface-variant mb-8 italic">"Now I don't have to go to the city to see a doctor. Aarogya AI helped me."</p>
+                  </div>
+                  <div className="flex items-center gap-4 mt-auto">
+                    <div className="w-14 h-14 rounded-full bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center text-white font-bold text-xl">R</div>
+                    <div>
+                      <p className="font-bold text-on-surface">Ramesh Kumar</p>
+                      <p className="text-xs text-on-surface-variant">Vidisha, Madhya Pradesh</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 flex flex-col h-full">
-                <span className="material-symbols-outlined text-primary text-4xl mb-6" style={{ fontVariationSettings: "'FILL' 1" }}>format_quote</span>
-                <div className="flex-1">
-                  <p className="font-body-md text-on-surface leading-relaxed mb-8 italic">"As an ASHA worker, this tool helps me track my village's health data instantly. It's like having a specialist in my pocket."</p>
-                </div>
-                <div className="flex items-center gap-4 mt-auto">
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-green-400 to-teal-500 flex items-center justify-center text-white font-bold text-xl">S</div>
-                  <div>
-                    <p className="font-bold text-on-surface">Sunita Devi</p>
-                    <p className="text-xs text-on-surface-variant">Ranchi, Jharkhand</p>
+                <div className="bg-slate-50 p-8 rounded-2xl shadow-sm border border-slate-100 flex flex-col h-full">
+                  <span className="material-symbols-outlined text-primary text-4xl mb-6" style={{ fontVariationSettings: "'FILL' 1" }}>format_quote</span>
+                  <div className="flex-1">
+                    <p className="font-body-md text-on-surface leading-relaxed mb-8 italic">"As an ASHA worker, this tool helps me track my village's health data instantly. It's like having a specialist in my pocket."</p>
+                  </div>
+                  <div className="flex items-center gap-4 mt-auto">
+                    <div className="w-14 h-14 rounded-full bg-gradient-to-br from-green-400 to-teal-500 flex items-center justify-center text-white font-bold text-xl">S</div>
+                    <div>
+                      <p className="font-bold text-on-surface">Sunita Devi</p>
+                      <p className="text-xs text-on-surface-variant">Ranchi, Jharkhand</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 flex flex-col h-full">
-                <span className="material-symbols-outlined text-primary text-4xl mb-6" style={{ fontVariationSettings: "'FILL' 1" }}>format_quote</span>
-                <div className="flex-1">
-                  <p className="font-body-md text-on-surface leading-relaxed mb-8 italic">"The AI triage is remarkably accurate. It allows us to focus our resources on the most critical cases first, saving precious time."</p>
-                </div>
-                <div className="flex items-center gap-4 mt-auto">
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center text-white font-bold text-xl">A</div>
-                  <div>
-                    <p className="font-bold text-on-surface">Dr. Arjun Rao</p>
-                    <p className="text-xs text-on-surface-variant">Apollo Hospitals, Hyderabad</p>
+                <div className="bg-slate-50 p-8 rounded-2xl shadow-sm border border-slate-100 flex flex-col h-full">
+                  <span className="material-symbols-outlined text-primary text-4xl mb-6" style={{ fontVariationSettings: "'FILL' 1" }}>format_quote</span>
+                  <div className="flex-1">
+                    <p className="font-body-md text-on-surface leading-relaxed mb-8 italic">"The AI triage is remarkably accurate. It allows us to focus our resources on the most critical cases first, saving precious time."</p>
+                  </div>
+                  <div className="flex items-center gap-4 mt-auto">
+                    <div className="w-14 h-14 rounded-full bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center text-white font-bold text-xl">A</div>
+                    <div>
+                      <p className="font-bold text-on-surface">Dr. Arjun Rao</p>
+                      <p className="text-xs text-on-surface-variant">Apollo Hospitals, Hyderabad</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -645,56 +668,6 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="py-24 px-6 bg-surface">
-          <div className="max-w-7xl mx-auto text-center space-y-16">
-            <div className="space-y-4">
-              <h2 className="font-h2 text-4xl text-on-surface">Built by Visionaries</h2>
-              <p className="text-on-surface-variant font-body-lg">Engineering for the next billion users.</p>
-            </div>
-            <div className="flex flex-wrap justify-center gap-12">
-              <div className="flex flex-col items-center gap-4">
-                <div className="w-24 h-24 rounded-full border-4 border-white shadow-xl overflow-hidden hover:scale-105 transition-all">
-                  <img alt="Sameer" className="w-full h-full object-cover" src="/team/sameer.jpg"/>
-                </div>
-                <p className="font-semibold text-on-surface">Sameer</p>
-              </div>
-              <div className="flex flex-col items-center gap-4">
-                <div className="w-24 h-24 rounded-full border-4 border-white shadow-xl overflow-hidden hover:scale-105 transition-all">
-                  <img alt="Nanditha" className="w-full h-full object-cover" src="/team/nandiths.jpg"/>
-                </div>
-                <p className="font-semibold text-on-surface">Nanditha</p>
-              </div>
-              <div className="flex flex-col items-center gap-4">
-                <div className="w-24 h-24 rounded-full border-4 border-white shadow-xl overflow-hidden hover:scale-105 transition-all">
-                  <img alt="Bhavana" className="w-full h-full object-cover" src="/team/bhavana.jpg"/>
-                </div>
-                <p className="font-semibold text-on-surface">Bhavana</p>
-              </div>
-              <div className="flex flex-col items-center gap-4">
-                <div className="w-24 h-24 rounded-full border-4 border-white shadow-xl overflow-hidden hover:scale-105 transition-all">
-                  <img alt="Likith Kumar" className="w-full h-full object-cover" src="/team/likith.jpg"/>
-                </div>
-                <p className="font-semibold text-on-surface">Likith Kumar</p>
-              </div>
-            </div>
-            <div className="bg-slate-900 rounded-[3rem] p-12 md:p-20 text-white relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-[80px]"></div>
-              <div className="relative z-10 space-y-8 max-w-2xl mx-auto">
-                <h2 className="font-h1 text-5xl">Ready to save lives?</h2>
-                <p className="text-slate-400 font-body-lg">Join us in making healthcare a fundamental human right, accessible to anyone, anywhere, in any language.</p>
-                <div className="flex flex-wrap justify-center gap-4">
-                  <Link 
-                    href={`/${locale}/chat`}
-                    className="bg-primary text-on-primary px-10 py-5 rounded-2xl font-bold text-lg shadow-2xl shadow-primary/20 hover:bg-primary-container transition-all active:scale-95"
-                  >
-                    Launch Demo
-                  </Link>
-                  <button className="bg-white/10 hover:bg-white/20 px-10 py-5 rounded-2xl font-bold text-lg backdrop-blur-sm transition-all border border-white/10 active:scale-95">Contact Partners</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
 
       {/* Footer */}

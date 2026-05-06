@@ -248,11 +248,11 @@ export function analyzeSymptoms(
   if (scores.length === 0) {
     const lang = detectedLang;
     const noRisk: Record<string, string> = {
-      Hindi: "आपके लक्षण गंभीर नहीं लगते। पर्याप्त पानी पिएं और आराम करें। अगर 2 दिन में ठीक न हों तो PHC जाएं।",
-      English: "Your symptoms don't indicate high risk. Rest, drink fluids. Visit PHC if no improvement in 2 days.",
-      Kannada: "ನಿಮ್ಮ ಲಕ್ಷಣಗಳು ತೀವ್ರವಾಗಿಲ್ಲ. ವಿಶ್ರಾಂತಿ ತೆಗೆದುಕೊಳ್ಳಿ. 2 ದಿನದಲ್ಲಿ ಸುಧಾರಿಸದಿದ್ದರೆ PHC ಗೆ ಹೋಗಿ.",
-      Tamil: "உங்கள் அறிகுறிகள் தீவிரமாக இல்லை. ஓய்வெடுங்கள். 2 நாட்களில் சரியாகவில்லை என்றால் PHC செல்லுங்கள்.",
-      Telugu: "మీ లక్షణాలు తీవ్రంగా లేవు. విశ్రాంతి తీసుకోండి. 2 రోజుల్లో మెరుగుపడకపోతే PHC వెళ్ళండి.",
+      Hindi: "आपके लक्षण हमारे विशिष्ट रोग डेटासेट से पूरी तरह मेल नहीं खाते हैं। कृपया घबराएं नहीं। अगर आप अस्वस्थ महसूस करते हैं, तो कृपया डॉक्टर से संपर्क करें या PHC जाएं।",
+      English: "Your symptoms don't perfectly match our specific disease datasets. Please don't worry. However, if you continue to feel unwell, we strongly advise contacting a doctor or visiting a PHC.",
+      Kannada: "ನಿಮ್ಮ ಲಕ್ಷಣಗಳು ನಮ್ಮ ನಿರ್ದಿಷ್ಟ ರೋಗ ದತ್ತಾಂಶಗಳೊಂದಿಗೆ ಸಂಪೂರ್ಣವಾಗಿ ಹೊಂದಿಕೆಯಾಗುತ್ತಿಲ್ಲ. ದಯವಿಟ್ಟು ಚಿಂತಿಸಬೇಡಿ. ನೀವು ಅನಾರೋಗ್ಯದಿಂದಿದ್ದರೆ ವೈದ್ಯರನ್ನು ಸಂಪರ್ಕಿಸಿ.",
+      Tamil: "உங்கள் அறிகுறிகள் எங்கள் குறிப்பிட்ட நோய் தரவுத்தொகுப்புகளுடன் சரியாக பொருந்தவில்லை. கவலைப்பட வேண்டாம். உடல்நிலை சரியில்லை என்றால் மருத்துவரை அணுகவும்.",
+      Telugu: "మీ లక్షణాలు మా నిర్దిష్ట వ్యాధి డేటాసెట్‌లకు సరిగ్గా సరిపోలడం లేదు. దయచేసి ఆందోళన చెందకండి. మీకు అనారోగ్యంగా అనిపిస్తే వైద్యుడిని సంప్రదించండి.",
     };
     return { content: noRisk[lang] || noRisk.English, detectedLanguage: lang, riskScores: null, report: null };
   }
@@ -270,12 +270,12 @@ export function analyzeSymptoms(
 
   const seasonalAlert = getSeasonalAlert(state);
   const closingMsgs: Record<string, string> = {
-    Hindi:   `आपके लक्षणों के आधार पर ${top.disease} का खतरा ${level} है। कृपया नजदीकी PHC जाएं।${seasonalAlert ? " ⚠️ " + seasonalAlert : ""}`,
-    English: `Based on your symptoms, ${top.disease} risk is ${level}. Please visit your nearest PHC immediately.${seasonalAlert ? " ⚠️ " + seasonalAlert : ""}`,
-    Kannada: `ನಿಮ್ಮ ಲಕ್ಷಣಗಳ ಆಧಾರದ ಮೇಲೆ ${top.disease} ಅಪಾಯ ${level}. ದಯವಿಟ್ಟು ಹತ್ತಿರದ PHC ಗೆ ಹೋಗಿ.`,
-    Tamil:   `உங்கள் அறிகுறிகளின் அடிப்படையில் ${top.disease} ஆபத்து ${level}. உடனடியாக PHC செல்லுங்கள்.`,
-    Telugu:  `మీ లక్షణాల ఆధారంగా ${top.disease} ప్రమాదం ${level}. దయచేసి దగ్గరలోని PHC కి వెళ్ళండి.`,
-    Bengali: `আপনার লক্ষণের ভিত্তিতে ${top.disease} ঝুঁকি ${level}। অনুগ্রহ করে নিকটস্থ PHC তে যান।`,
+    Hindi:   `आपके लक्षण हमारे स्वास्थ्य डेटा के अनुसार ${top.disease} के कुछ संकेतों से मेल खाते हैं। कृपया घबराएं नहीं—यह कोई निदान नहीं है। अगर लक्षण बने रहते हैं, तो कृपया डॉक्टर से मिलें या नजदीकी PHC जाएं।${seasonalAlert ? " ⚠️ " + seasonalAlert : ""}`,
+    English: `Your symptoms align with some signs of ${top.disease} according to our health data. Please do not worry—this is just an initial assessment, not a diagnosis. If your symptoms persist, we strongly advise contacting a doctor or visiting your nearest PHC.${seasonalAlert ? " ⚠️ " + seasonalAlert : ""}`,
+    Kannada: `ನಮ್ಮ ಆರೋಗ್ಯ ದತ್ತಾಂಶದ ಪ್ರಕಾರ ನಿಮ್ಮ ಲಕ್ಷಣಗಳು ${top.disease} ನ ಕೆಲವು ಚಿಹ್ನೆಗಳಿಗೆ ಹೊಂದಿಕೆಯಾಗುತ್ತವೆ. ದಯವಿಟ್ಟು ಚಿಂತಿಸಬೇಡಿ-ಇದು ರೋಗನಿರ್ಣಯವಲ್ಲ. ಲಕ್ಷಣಗಳು ಮುಂದುವರಿದರೆ ವೈದ್ಯರನ್ನು ಸಂಪರ್ಕಿಸಿ.`,
+    Tamil:   `எங்கள் சுகாதார தரவுகளின்படி உங்கள் அறிகுறிகள் ${top.disease} இன் சில அறிகுறிகளுடன் ஒத்துப்போகின்றன. கவலைப்பட வேண்டாம்-இது ஒரு நோயறிதல் அல்ல. அறிகுறிகள் தொடர்ந்தால் மருத்துவரை அணுகவும்.`,
+    Telugu:  `మా ఆరోగ్య డేటా ప్రకారం మీ లక్షణాలు ${top.disease} యొక్క కొన్ని సంకేతాలతో సరిపోలుతున్నాయి. దయచేసి ఆందోళన చెందకండి-ఇది రోగనిర్ధారణ కాదు. లక్షణాలు కొనసాగితే వైద్యుడిని సంప్రదించండి.`,
+    Bengali: `আমাদের স্বাস্থ্য তথ্য অনুযায়ী আপনার লক্ষণগুলি ${top.disease} এর কিছু লক্ষণের সাথে মিলে যায়। চিন্তা করবেন না-এটি কোন রোগ নির্ণয় নয়। লক্ষণ অব্যাহত থাকলে ডাক্তারের সাথে পরামর্শ করুন।`,
   };
 
   const report = {
