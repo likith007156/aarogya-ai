@@ -2,7 +2,11 @@ import { NextResponse } from "next/server";
 import QRCode from "qrcode";
 import { PrismaClient } from "@prisma/client";
 
-const prisma = new PrismaClient();
+let prisma: PrismaClient | null = null;
+
+if (process.env.DATABASE_URL) {
+  prisma = new PrismaClient();
+}
 
 export async function POST(req: Request) {
   try {
@@ -14,15 +18,27 @@ export async function POST(req: Request) {
     const qrData = JSON.stringify({ name, abhaId });
     const qrCodeDataUrl = await QRCode.toDataURL(qrData);
 
-    const patient = await prisma.patient.create({
-      data: {
+    let patient = null;
+    if (prisma) {
+      patient = await prisma.patient.create({
+        data: {
+          name: name || "Anonymous User",
+          age: age || 30,
+          village: village || "Unknown",
+          riskLevel: "MEDIUM",
+          abhaId,
+        }
+      });
+    } else {
+      patient = {
+        id: Math.random().toString(36).substring(7),
         name: name || "Anonymous User",
         age: age || 30,
         village: village || "Unknown",
         riskLevel: "MEDIUM",
         abhaId,
-      }
-    });
+      };
+    }
 
     return NextResponse.json({
       success: true,
