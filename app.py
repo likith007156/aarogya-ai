@@ -1,10 +1,20 @@
-from flask import Flask, request, Response
+from flask import Flask, request, Response, jsonify
+from emergency.emergency_handler import EmergencyHandler
 from twilio.twiml.voice_response import VoiceResponse, Gather
 from dotenv import load_dotenv
 import os
 
 load_dotenv()
 app = Flask(__name__)
+
+@app.after_request
+def add_cors_headers(response):
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS, PUT, DELETE'
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization'
+    return response
+
+emergency_handler_inst = EmergencyHandler()
 
 # Session storage
 sessions = {}
@@ -295,6 +305,75 @@ def result():
     response.hangup()
     print(f"Call completed | Symptoms: {symptoms} | Risk: {risk}")
     return Response(str(response), mimetype="text/xml")
+
+# ─────────────────────────
+# EMERGENCY API ENDPOINTS
+# ─────────────────────────
+@app.route("/emergency", methods=["POST"])
+def emergency_endpoint():
+    """
+    Main emergency API endpoint
+    Called by chatbot when emergency detected
+    """
+
+    data = request.json
+
+    # Validate input
+    if not data:
+        return jsonify({
+            "error": "No data provided",
+            "call_now": "108"
+        }), 400
+
+    emergency_type = data.get(
+        "emergency_type", "General Emergency"
+    )
+
+    location_data = data.get("location")
+
+    if not location_data:
+        return jsonify({
+            "error": "No location provided",
+            "message": "Call 108 immediately",
+            "number": "108"
+        }), 400
+
+    # Process emergency
+    result = emergency_handler_inst.handle_emergency(
+        emergency_type=emergency_type,
+        location_data=location_data,
+        patient_details=data.get("patient_details")
+    )
+
+    return jsonify(result), 200
+
+
+@app.route("/hospitals/nearby", methods=["POST"])
+def nearby_hospitals():
+    """
+    Non-emergency hospital search endpoint
+    """
+    data = request.json
+
+    lat = data.get("latitude")
+    lng = data.get("longitude")
+
+    if not lat or not lng:
+        return jsonify({
+            "error": "Latitude and longitude required"
+        }), 400
+
+    from emergency.hospital_finder import HospitalFinder
+    finder = HospitalFinder()
+
+    result = finder.find_nearest_hospitals(
+        latitude=lat,
+        longitude=lng,
+        emergency_level="normal",
+        max_results=5
+    )
+
+    return jsonify(result), 200
 
 
 if __name__ == "__main__":
