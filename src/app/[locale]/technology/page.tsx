@@ -71,13 +71,13 @@ export default async function TechnologyPage(props: { params: Promise<{ locale: 
                 {/* Card 1 */}
                 <div className="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center p-2">
-                      <img src="/logo-sarvam.png" alt="Sarvam" className="w-full h-full object-contain" />
+                    <div className="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center p-2 text-blue-600">
+                      <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>mic</span>
                     </div>
-                    <strong className="text-[#111827] font-bold text-lg">Sarvam AI — STT</strong>
+                    <strong className="text-[#111827] font-bold text-lg">Web Speech API</strong>
                   </div>
                   <p className="text-slate-500 text-sm leading-relaxed">
-                    State-of-the-art speech-to-text for 10+ Indian languages with dialect support.
+                    Browser-based speech-to-text for 10+ Indian languages with offline capability.
                   </p>
                 </div>
 
@@ -87,62 +87,78 @@ export default async function TechnologyPage(props: { params: Promise<{ locale: 
                     <div className="w-12 h-12 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center p-2">
                       <img src="/logo-sarvam.png" alt="Sarvam" className="w-full h-full object-contain" />
                     </div>
-                    <strong className="text-[#111827] font-bold text-lg">Sarvam AI — Translation</strong>
+                    <strong className="text-[#111827] font-bold text-lg">Sarvam AI — TTS</strong>
                   </div>
                   <p className="text-slate-500 text-sm leading-relaxed">
-                    Real-time translation between Indian languages preserving medical context.
+                    Natural voice synthesis for Indian languages with dialect-aware text-to-speech.
                   </p>
                 </div>
 
                 {/* Card 3 */}
                 <div className="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-orange-50 border border-orange-100 flex items-center justify-center p-2 text-orange-600">
-                      <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>bolt</span>
+                    <div className="w-12 h-12 rounded-xl bg-purple-50 border border-purple-100 flex items-center justify-center p-2">
+                      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8">
+                        <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z" fill="#9333EA" opacity="0.2"/>
+                        <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z" stroke="#9333EA" strokeWidth="2" fill="none"/>
+                      </svg>
                     </div>
-                    <strong className="text-[#111827] font-bold text-lg">Groq LLM</strong>
+                    <strong className="text-[#111827] font-bold text-lg">Gemini 2.5 Flash</strong>
                   </div>
                   <p className="text-slate-500 text-sm leading-relaxed">
-                    Ultra-fast medical reasoning via Groq's inference engine with Llama models.
+                    Primary medical LLM with native multilingual support and empathetic responses.
                   </p>
                 </div>
 
-                {/* Card 4 */}
+                {/* Card 4 - Groq */}
+                <div className="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-orange-50 border border-orange-100 flex items-center justify-center p-2 text-orange-600">
+                      <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>bolt</span>
+                    </div>
+                    <strong className="text-[#111827] font-bold text-lg">Groq (Llama 3.3)</strong>
+                  </div>
+                  <p className="text-slate-500 text-sm leading-relaxed">
+                    Ultra-fast LLM inference (< 1s) for high-availability medical reasoning.
+                  </p>
+                </div>
+
+                {/* Card 5 - ABDM */}
                 <div className="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
                   <div className="flex items-center gap-4 mb-4">
                     <div className="w-12 h-12 rounded-xl bg-green-50 border border-green-100 flex items-center justify-center p-2">
                       <img src="/logo-abdm.png" alt="ABDM" className="w-full h-full object-contain opacity-80" />
                     </div>
-                    <strong className="text-[#111827] font-bold text-lg">ABDM Integration</strong>
+                    <strong className="text-[#111827] font-bold text-lg">ABDM Ready</strong>
                   </div>
                   <p className="text-slate-500 text-sm leading-relaxed">
-                    Connects with Ayushman Bharat Digital Mission for Health ID creation.
+                    Mock ABHA Health ID generation ready for Ayushman Bharat integration.
                   </p>
                 </div>
 
-                {/* Card 5 */}
+                {/* Card 6 - Twilio */}
                 <div className="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
                   <div className="flex items-center gap-4 mb-4">
                     <div className="w-12 h-12 rounded-xl bg-rose-50 border border-rose-100 flex items-center justify-center p-2 text-rose-600">
                       <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>call</span>
                     </div>
-                    <strong className="text-[#111827] font-bold text-lg">Twilio IVRS</strong>
+                    <strong className="text-[#111827] font-bold text-lg">Twilio</strong>
                   </div>
                   <p className="text-slate-500 text-sm leading-relaxed">
-                    Programmable voice calls enabling access on basic feature phones.
+                    WhatsApp bot and IVRS for feature phones - multi-channel healthcare access.
                   </p>
                 </div>
 
-                {/* Card 6 */}
+                {/* Card 7 - ICMR */}
                 <div className="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-purple-50 border border-purple-100 flex items-center justify-center p-2 text-purple-600">
+                    <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center p-2 text-emerald-600">
                       <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>shield</span>
                     </div>
                     <strong className="text-[#111827] font-bold text-lg">ICMR Protocols</strong>
                   </div>
                   <p className="text-slate-500 text-sm leading-relaxed">
-                    All triage logic follows official Indian Council of Medical Research guidelines.
+                    Rule-based risk engine following official Indian medical research guidelines.
                   </p>
                 </div>
               </div>
@@ -170,31 +186,28 @@ export default async function TechnologyPage(props: { params: Promise<{ locale: 
               {/* Connector 1 */}
               <div className="hidden md:block self-center flex-1 h-0.5 bg-primary/40 min-w-[20px]"></div>
 
-              {/* Node 2: Sarvam AI — STT + Translation */}
+              {/* Node 2: Speech Processing */}
               <div className="flex flex-col items-center gap-3 z-10 shrink-0 w-24">
-                <div className="w-24 h-24 bg-white rounded-2xl flex items-center justify-center border-2 border-primary/30 shadow-lg p-2">
-                  <img src="/logo-sarvam.png" alt="Sarvam AI" className="w-full h-full object-contain" />
+                <div className="w-24 h-24 bg-white rounded-2xl flex items-center justify-center border-2 border-primary/30 shadow-lg p-3">
+                  <span className="material-symbols-outlined text-blue-600" style={{ fontVariationSettings: "'FILL' 1", fontSize: "48px" }}>mic</span>
                 </div>
                 <div className="flex flex-col items-center w-0 justify-center">
-                  <p className="font-label-caps text-xs font-bold text-on-surface tracking-wider whitespace-nowrap">Sarvam AI</p>
-                  <p className="text-[10px] text-on-surface-variant -mt-2 whitespace-nowrap">STT + Translation</p>
+                  <p className="font-label-caps text-xs font-bold text-on-surface tracking-wider whitespace-nowrap">Web Speech</p>
+                  <p className="text-[10px] text-on-surface-variant -mt-2 whitespace-nowrap">STT (Browser)</p>
                 </div>
               </div>
 
               {/* Connector 2 */}
               <div className="hidden md:block self-center flex-1 h-0.5 bg-primary/40 min-w-[20px]"></div>
 
-              {/* Node 3: Groq AI — Medical LLM */}
+              {/* Node 3: Medical AI (Gemini + Groq) */}
               <div className="flex flex-col items-center gap-3 z-10 shrink-0 w-24">
-                <div className="w-24 h-24 bg-[#F55036] rounded-2xl flex flex-col items-center justify-center shadow-lg overflow-hidden">
-                  <span className="text-white font-bold text-4xl tracking-tighter leading-none mt-2" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>groq</span>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg" className="mt-1">
-                    <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" />
-                  </svg>
+                <div className="w-24 h-24 bg-gradient-to-br from-purple-500 to-orange-500 rounded-2xl flex items-center justify-center shadow-lg">
+                  <span className="material-symbols-outlined text-white" style={{ fontVariationSettings: "'FILL' 1", fontSize: "48px" }}>psychology</span>
                 </div>
                 <div className="flex flex-col items-center w-0 justify-center">
-                  <p className="font-label-caps text-xs font-bold text-on-surface tracking-wider whitespace-nowrap">Groq AI</p>
-                  <p className="text-[10px] text-on-surface-variant -mt-2 whitespace-nowrap">Symptom Analysis</p>
+                  <p className="font-label-caps text-xs font-bold text-on-surface tracking-wider whitespace-nowrap">Medical AI</p>
+                  <p className="text-[10px] text-on-surface-variant -mt-2 whitespace-nowrap">Gemini + Groq</p>
                 </div>
               </div>
 
