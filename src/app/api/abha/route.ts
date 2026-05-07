@@ -1,12 +1,6 @@
 import { NextResponse } from "next/server";
 import QRCode from "qrcode";
-import { PrismaClient } from "@prisma/client";
-
-let prisma: PrismaClient | null = null;
-
-if (process.env.DATABASE_URL) {
-  prisma = new PrismaClient();
-}
+import { prisma } from "@/lib/prisma";
 
 export async function POST(req: Request) {
   try {
@@ -19,7 +13,7 @@ export async function POST(req: Request) {
     const qrCodeDataUrl = await QRCode.toDataURL(qrData);
 
     let patient = null;
-    if (prisma) {
+    try {
       patient = await prisma.patient.create({
         data: {
           name: name || "Anonymous User",
@@ -29,7 +23,8 @@ export async function POST(req: Request) {
           abhaId,
         }
       });
-    } else {
+    } catch (dbError) {
+      console.warn("Database unavailable, using mock data:", dbError);
       patient = {
         id: Math.random().toString(36).substring(7),
         name: name || "Anonymous User",
@@ -37,6 +32,8 @@ export async function POST(req: Request) {
         village: village || "Unknown",
         riskLevel: "MEDIUM",
         abhaId,
+        createdAt: new Date(),
+        updatedAt: new Date(),
       };
     }
 
