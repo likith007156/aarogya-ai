@@ -538,7 +538,7 @@ export function analyzeSymptoms(
   });
 
   const severeSymptoms = ["blood_cough", "breathlessness", "chest_pain"].some((symptom) => allSymptoms.has(symptom));
-  const enoughForReport = (allSymptoms.size >= 2 && userMessages.length >= 3) || userMessages.length >= 4 || (severeSymptoms && userMessages.length >= 3);
+  const enoughForReport = (allSymptoms.size >= 3 && userMessages.length >= 5) || userMessages.length >= 6 || (severeSymptoms && userMessages.length >= 4);
 
   if (userMessages.length === 0) {
     return {
