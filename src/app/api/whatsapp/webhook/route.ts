@@ -1,9 +1,22 @@
 import { NextResponse } from "next/server";
-import twilio from "twilio";
 import { analyzeSymptoms } from "@/lib/dataset-engine";
 import { generateChatResponse } from "@/lib/groq";
 
-const MessagingResponse = twilio.twiml.MessagingResponse;
+/** Lightweight TwiML builder — avoids importing the 50MB twilio SDK */
+function twimlMessage(body: string): string {
+  const escaped = body
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+  return `<?xml version="1.0" encoding="UTF-8"?><Response><Message>${escaped}</Message></Response>`;
+}
+function twimlResponse(): { message: (s: string) => void; toString: () => string } {
+  let _msg = "";
+  return {
+    message: (s: string) => { _msg = s; },
+    toString: () => twimlMessage(_msg),
+  };
+}
 
 // Store both history and detected language per user session
 const sessions = new Map<string, { history: { role: string; content: string }[]; lang: string }>();
@@ -30,7 +43,7 @@ export async function POST(req: Request) {
     const body = params.get("Body")?.trim() || "";
     const from = params.get("From") || "";
 
-    const twiml = new MessagingResponse();
+    const twiml = twimlResponse();
 
     const detectedLang = detectLanguage(body);
 
@@ -120,8 +133,6 @@ export async function POST(req: Request) {
     });
   } catch (error) {
     console.error("Twilio Webhook Error:", error);
-    const twiml = new MessagingResponse();
-    twiml.message("I'm having trouble right now. For medical emergencies, please call 108.");
-    return new NextResponse(twiml.toString(), { headers: { "Content-Type": "text/xml" } });
+    return new NextResponse(twimlMessage("I'm having trouble right now. For medical emergencies, please call 108."), { headers: { "Content-Type": "text/xml" } });
   }
 }

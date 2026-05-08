@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import twilio from "twilio";
 
 export async function POST(req: Request) {
   try {
@@ -14,30 +13,35 @@ export async function POST(req: Request) {
       fromNumber = `whatsapp:${fromNumber.startsWith('+') ? fromNumber : '+' + fromNumber}`;
     }
 
-    // Format destination number (make sure it has whatsapp: prefix)
     let toNumber = targetNumber;
     if (toNumber && !toNumber.startsWith("whatsapp:")) {
       toNumber = `whatsapp:${toNumber.startsWith('+') ? toNumber : '+' + toNumber}`;
     }
 
     if (!accountSid || accountSid.length < 10 || !authToken || authToken.length < 10) {
-      // Mock mode: simulate delay
+      // Mock mode: simulate success without real Twilio credentials
       return NextResponse.json({ success: true, isMock: true, message: "Mock message sent successfully!" });
     }
 
-    // Real mode: Send via Twilio API
-    try {
-      const client = twilio(accountSid, authToken);
-      const message = await client.messages.create({
-        body: Body,
-        from: fromNumber,
-        to: toNumber,
-      });
-      return NextResponse.json({ success: true, messageSid: message.sid, isMock: false });
-    } catch (twilioError: any) {
-      // Return the real error so the UI can show failure
-      return NextResponse.json({ success: false, error: twilioError.message }, { status: 400 });
+    // Use Twilio REST API directly — no SDK needed, saves ~50MB bundle
+    const formData = new URLSearchParams({ Body, From: fromNumber, To: toNumber });
+    const twilioRes = await fetch(
+      `https://api.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: "Basic " + Buffer.from(`${accountSid}:${authToken}`).toString("base64"),
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: formData.toString(),
+      }
+    );
+
+    const data = await twilioRes.json();
+    if (!twilioRes.ok) {
+      return NextResponse.json({ success: false, error: data.message || "Twilio API error" }, { status: 400 });
     }
+    return NextResponse.json({ success: true, messageSid: data.sid, isMock: false });
   } catch (error: any) {
     return NextResponse.json({ success: false, error: error.message || "Failed to send message" }, { status: 500 });
   }

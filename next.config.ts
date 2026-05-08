@@ -9,9 +9,16 @@ const nextConfig: NextConfig = {
       bodySizeLimit: '2mb',
     },
   },
-  outputFileTracingIncludes: {
-    '/api/**/*': ['./node_modules/**/*.wasm', './node_modules/**/*.node'],
-  },
+  // Prevent heavy packages from being bundled into serverless functions.
+  // They will be required at runtime from node_modules instead.
+  serverExternalPackages: [
+    'twilio',
+    '@prisma/client',
+    'prisma',
+    '@google/generative-ai',
+    'openai',
+    'groq-sdk',
+  ],
 };
 
 export default withNextIntl(nextConfig);
