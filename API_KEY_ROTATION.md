@@ -43,13 +43,13 @@ TWILIO_PHONE_NUMBER=whatsapp:+14155238886
 1. Go to https://dashboard.sarvam.ai
 2. Log in to your account
 3. Navigate to **API Keys** section
-4. Click **"Revoke"** on the old key (sk_t2b8kixy...)
+4. Click **"Revoke"** on the old key (your_sarvam_key_here...)
 5. Click **"Create New API Key"**
 6. Copy the new key immediately (it won't be shown again)
 
 **What to update in .env:**
 ```env
-SARVAM_API_KEY=sk_your_new_key_here
+SARVAM_API_KEY=your_sarvam_key_here
 ```
 
 **Note:** If you don't have a Sarvam account or want to skip this:
@@ -65,14 +65,14 @@ The app will automatically fall back to browser text-to-speech.
 1. Go to https://console.groq.com
 2. Log in to your account
 3. Navigate to **API Keys** section
-4. Find the old key (gsk_Qaqf7D87...) and click **"Delete"**
+4. Find the old key (gyour_sarvam_key_here...) and click **"Delete"**
 5. Click **"Create API Key"**
 6. Give it a name (e.g., "Aarogya AI Production")
 7. Copy the new key
 
 **What to update in .env:**
 ```env
-GROQ_API_KEY=gsk_your_new_key_here
+GROQ_API_KEY=gyour_sarvam_key_here
 ```
 
 **Note:** Groq is free and fast. Highly recommended to keep it.
@@ -90,7 +90,7 @@ GROQ_API_KEY=gsk_your_new_key_here
 
 **What to update in .env:**
 ```env
-GEMINI_API_KEY=AIzaSy_your_new_key_here
+GEMINI_API_KEY=your_gemini_key_here
 ```
 
 **Note:** This is REQUIRED for the app to work properly. Gemini is free for testing.
@@ -106,7 +106,7 @@ After rotating all keys, your `.env` should look like this:
 DATABASE_URL="file:./dev.db"
 
 # Google Gemini API Key (REQUIRED)
-GEMINI_API_KEY=AIzaSy_your_new_gemini_key
+GEMINI_API_KEY=your_gemini_key_here
 
 # Twilio WhatsApp (Optional - for WhatsApp bot)
 TWILIO_ACCOUNT_SID=AC_your_new_twilio_sid
@@ -114,10 +114,10 @@ TWILIO_AUTH_TOKEN=your_new_twilio_token
 TWILIO_PHONE_NUMBER=whatsapp:+14155238886
 
 # Sarvam AI TTS (Optional - falls back to browser TTS)
-SARVAM_API_KEY=sk_your_new_sarvam_key
+SARVAM_API_KEY=your_sarvam_key_here
 
 # Groq API (Optional but recommended - free and fast)
-GROQ_API_KEY=gsk_your_new_groq_key
+GROQ_API_KEY=gyour_sarvam_key_here
 
 # Base URL (auto-set by deployment platform)
 BASE_URL=
