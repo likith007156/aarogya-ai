@@ -159,6 +159,13 @@ export default function LandingPage() {
                   <span className="material-symbols-outlined">chat</span>
                   WhatsApp Demo
                 </Link>
+                <Link 
+                  href="#see-the-magic"
+                  className="bg-primary text-white px-8 py-4 rounded-xl font-semibold flex items-center gap-2 hover:bg-primary-container hover:text-white transition-all active:scale-95"
+                >
+                  <span className="material-symbols-outlined">science</span>
+                  Try Symptom Analyser
+                </Link>
               </div>
               <div className="pt-8 border-t border-slate-200">
                 <p className="text-xs font-label-caps text-on-surface-variant mb-4 font-bold">TRUSTED ECOSYSTEM PARTNERS</p>
