@@ -1,4 +1,3 @@
 {
-  "buildCommand": "prisma generate && next build",
-  "framework": null
+  "buildCommand": "prisma generate && next build"
 }
