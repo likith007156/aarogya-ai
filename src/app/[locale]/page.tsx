@@ -68,7 +68,6 @@ export default function LandingPage() {
   const [isAiLoading, setIsAiLoading] = useState(false);
   const [riskWidth, setRiskWidth] = useState(0);
   const [showAiResponse, setShowAiResponse] = useState(false);
-  const [showVideo, setShowVideo] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -153,13 +152,6 @@ export default function LandingPage() {
                 </p>
               </div>
               <div className="flex flex-wrap gap-4">
-                <button
-                  onClick={() => setShowVideo(true)}
-                  className="bg-primary text-on-primary px-8 py-4 rounded-xl font-semibold flex items-center gap-2 shadow-xl hover:shadow-primary/20 transition-all active:scale-95 pulse-glow"
-                >
-                  <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>play_circle</span>
-                  Watch Demo
-                </button>
                 <Link 
                   href={`/${locale}/whatsapp`}
                   className="border-2 border-primary text-primary px-8 py-4 rounded-xl font-semibold flex items-center gap-2 hover:bg-primary/5 transition-all active:scale-95"
@@ -689,38 +681,6 @@ export default function LandingPage() {
           <div className="text-on-surface-variant text-sm">© 2026 Aarogya AI. Made with ❤️ in India</div>
         </div>
       </footer>
-
-      {/* ── Video Demo Modal ── */}
-      {showVideo && (
-        <div
-          className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
-          onClick={() => setShowVideo(false)}
-        >
-          <div
-            className="relative w-full max-w-4xl rounded-2xl overflow-hidden shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Close button */}
-            <button
-              onClick={() => setShowVideo(false)}
-              className="absolute top-3 right-3 z-10 w-9 h-9 bg-black/60 hover:bg-black/80 rounded-full flex items-center justify-center transition-all"
-            >
-              <span className="material-symbols-outlined text-white text-xl">close</span>
-            </button>
-
-            {/* YouTube embed — replace VIDEO_ID with your actual demo video ID */}
-            <div className="aspect-video w-full">
-              <iframe
-                className="w-full h-full"
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0"
-                title="Aarogya AI Demo"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            </div>
-          </div>
-        </div>
-      )}
     </>
   );
 }
